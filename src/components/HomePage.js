@@ -185,7 +185,7 @@ const HomePage = () => {
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
-        <div className="text-2xl font-bold text-gray-800">Luxury Jewels</div>
+        <div className="text-2xl font-bold text-gray-800">Ring Cutomizer</div>
         <div className="hidden md:flex space-x-8">
           <button 
             onClick={() => navigate('/custom-ring')}

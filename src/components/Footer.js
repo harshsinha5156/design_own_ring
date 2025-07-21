@@ -10,7 +10,7 @@ const Footer = () => {
           
           {/* About Section */}
           <div>
-            <h3 className="text-xl font-bold mb-6 text-yellow-400">Luxury Jewels</h3>
+            <h3 className="text-xl font-bold mb-6 text-yellow-400">Ring Customizer</h3>
             <p className="mb-4 text-gray-300">
               Crafting exquisite jewelry since 1995. Each piece is handcrafted with precision and passion to celebrate your special moments.
             </p>
@@ -40,9 +40,9 @@ const Footer = () => {
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Home</a></li>
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Shop</a></li>
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Custom Rings</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Collections</a></li>
+              {/* <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Collections</a></li>
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">About Us</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Contact</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Contact</a></li> */}
             </ul>
           </div>
 
@@ -53,9 +53,9 @@ const Footer = () => {
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">My Account</a></li>
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Order Tracking</a></li>
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Wishlist</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Shipping Policy</a></li>
+              {/* <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Shipping Policy</a></li>
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Returns & Exchanges</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">FAQ</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">FAQ</a></li> */}
             </ul>
           </div>
 
@@ -65,7 +65,7 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-start">
                 <MdLocationOn className="mt-1 mr-3 text-yellow-400" size={20} />
-                <p className="text-gray-300">123 Jewel Street, Diamond District, New York, NY 10001</p>
+                <p className="text-gray-300">Secto 18 , Noida , UP, India</p>
               </div>
               <div className="flex items-center">
                 <MdPhone className="mr-3 text-yellow-400" size={20} />
@@ -73,7 +73,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center">
                 <MdEmail className="mr-3 text-yellow-400" size={20} />
-                <p className="text-gray-300">info@luxuryjewels.com</p>
+                <p className="text-gray-300">ring.Cutomizer@gmail.com</p>
               </div>
             </div>
 
@@ -101,7 +101,7 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Luxury Jewels. All rights reserved.
+            &copy; {new Date().getFullYear()} ring Cutomizer. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors">Privacy Policy</a>
