@@ -83,10 +83,11 @@ const MetalSelection = ({ onNext }) => {
             </div>
 
             {/* Text section with attractive background */}
-            <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-4 text-center h-24 flex flex-col justify-center">
-              <h4 className="text-2xl font-bold text-white">{metal.name}</h4>
-                 
-
+            <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-4 text-center">
+              <h4 className="text-lg font-semibold text-white">{metal.name}</h4>
+              <p className="text-yellow-400 mt-2 font-medium">
+                ${metal.price.toLocaleString()}
+              </p>
             </div>
           </div>
         ))}

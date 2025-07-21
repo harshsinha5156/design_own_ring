@@ -4,23 +4,11 @@ import MetalSelection from './MetalSelection';
 import DiamondSelection from './DiamondSelection';
 import StyleSelection from './StyleSelection';
 import ReviewStep from './ReviewStep';
-import GoldSelection from '../pages/GoldSelection';
-import PlatinumSelection from '../pages/PlatinumSelection';
-import RoseGoldSelection from '../pages/RoseGoldSelection';
-import RoundDiamonds from '../pages/RoundDiamonds';
-import PrincessDiamonds from '../pages/PrincessDiamonds';
-import OvalDiamonds from '../pages/OvalDiamonds';
-import ClassicStyle from '../pages/ClassicStyle';
-import VintageStyle from '../pages/VintageStyle';
-import ModernStyle from '../pages/ModernStyle';
 
 const CustomRingPage = ({ onBack }) => {
   const [selectedMetal, setSelectedMetal] = useState(null);
-  const [selectedMetalType, setSelectedMetalType] = useState(null);
   const [selectedDiamond, setSelectedDiamond] = useState(null);
-  const [selectedDiamondType, setSelectedDiamondType] = useState(null);
   const [selectedStyle, setSelectedStyle] = useState(null);
-  const [selectedStyleType, setSelectedStyleType] = useState(null);
   const [currentStep, setCurrentStep] = useState(1);
   const [orderSubmitted, setOrderSubmitted] = useState(false);
 
@@ -42,38 +30,23 @@ const CustomRingPage = ({ onBack }) => {
     { id: 3, name: "Modern", price: 500, image: "https://media.istockphoto.com/id/468017397/photo/cushion-cut-diamond-halo-engagement-wedding-ring.jpg?s=612x612&w=0&k=20&c=GlL8HIKtF4Gq1AEIWm7amDtTJOrQxU6Q0W0hHJaVv8U=" }
   ];
 
-  const totalPrice = (selectedMetalType?.price || selectedMetal?.price || 0) + 
-                    (selectedDiamondType?.price || selectedDiamond?.price || 0) + 
-                    (selectedStyleType?.price || selectedStyle?.price || 0);
+  const totalPrice = (selectedMetal?.price || 0) + 
+                    (selectedDiamond?.price || 0) + 
+                    (selectedStyle?.price || 0);
 
   const handleMetalSelected = (metal) => {
     setSelectedMetal(metal);
-    setCurrentStep(2); // Immediately go to metal type selection
-  };
-
-  const handleMetalTypeSelected = (metalType) => {
-    setSelectedMetalType(metalType);
-    setCurrentStep(3); // Proceed to diamond selection
+    setCurrentStep(2); 
   };
 
   const handleDiamondSelected = (diamond) => {
     setSelectedDiamond(diamond);
-    // Don't proceed to next step yet, wait for diamond type selection
-  };
-
-  const handleDiamondTypeSelected = (diamondType) => {
-    setSelectedDiamondType(diamondType);
-    setCurrentStep(4); // Proceed to style selection
+    setCurrentStep(3); 
   };
 
   const handleStyleSelected = (style) => {
     setSelectedStyle(style);
-    // Don't proceed to next step yet, wait for style type selection
-  };
-
-  const handleStyleTypeSelected = (styleType) => {
-    setSelectedStyleType(styleType);
-    setCurrentStep(5); // Proceed to review
+    setCurrentStep(4); 
   };
 
   const handleSubmitOrder = () => {
@@ -82,24 +55,14 @@ const CustomRingPage = ({ onBack }) => {
       setOrderSubmitted(false);
       setCurrentStep(1);
       setSelectedMetal(null);
-      setSelectedMetalType(null);
       setSelectedDiamond(null);
-      setSelectedDiamondType(null);
       setSelectedStyle(null);
-      setSelectedStyleType(null);
       onBack();
     }, 3000);
   };
 
   const prevStep = () => {
-    if (currentStep === 2) {
-      setCurrentStep(1); // Back to metal selection
-      setSelectedMetal(null);
-    } else if (currentStep === 3 && selectedDiamond) {
-      setSelectedDiamond(null); // Back to diamond type selection
-    } else if (currentStep === 4 && selectedStyle) {
-      setSelectedStyle(null); // Back to style type selection
-    } else if (currentStep > 1) {
+    if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
     }
   };
@@ -129,26 +92,22 @@ const CustomRingPage = ({ onBack }) => {
         <div className="max-w-7xl mx-auto rounded-xl p-6 sm:p-8">
           <h1 className="text-3xl font-bold mb-8 text-center">Design Your Custom Ring</h1>
 
-          {/* Progress Steps - 4 steps (Metal, Diamond, Style, Review) */}
+          {/* Progress Steps */}
           <div className="flex justify-between mb-8 relative">
             <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 -z-10"></div>
             <div
               className="absolute top-1/2 left-0 h-1 bg-yellow-600 -z-10 transition-all duration-300"
               style={{ 
                 width: `${currentStep === 1 ? 0 : 
-                        currentStep === 2 ? 25 : 
-                        currentStep === 3 ? 50 : 
-                        currentStep === 4 ? 75 : 100}%` 
+                        currentStep === 2 ? 33 : 
+                        currentStep === 3 ? 66 : 100}%` 
               }}
             ></div>
             {['Metal', 'Diamond', 'Style', 'Review'].map((label, index) => (
               <div key={index} className="flex flex-col items-center">
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                    (currentStep === 1 && index === 0) ||
-                    (currentStep === 2 && index <= 1) ||
-                    (currentStep === 3 && index <= 2) ||
-                    (currentStep >= 4 && index <= 3) ? 'bg-yellow-600 text-white' : 'bg-gray-200 text-gray-600'
+                    currentStep > index ? 'bg-yellow-600 text-white' : 'bg-gray-200 text-gray-600'
                   } font-bold`}
                 >
                   {index + 1}
@@ -190,95 +149,29 @@ const CustomRingPage = ({ onBack }) => {
                 />
               )}
 
-              {/* Metal type selection pages - shown as step 2 */}
-              {currentStep === 2 && selectedMetal?.name === "Gold" && (
-                <GoldSelection 
-                  onNext={handleMetalTypeSelected}
-                  onBack={prevStep}
-                />
-              )}
-
-              {currentStep === 2 && selectedMetal?.name === "Platinum" && (
-                <PlatinumSelection 
-                  onNext={handleMetalTypeSelected}
-                  onBack={prevStep}
-                />
-              )}
-
-              {currentStep === 2 && selectedMetal?.name === "Rose Gold" && (
-                <RoseGoldSelection 
-                  onNext={handleMetalTypeSelected}
-                  onBack={prevStep}
-                />
-              )}
-
-              {/* Diamond selection - step 3 */}
-              {currentStep === 3 && !selectedDiamond && (
+              {currentStep === 2 && (
                 <DiamondSelection 
                   diamonds={diamonds}
                   onNext={handleDiamondSelected}
                   onBack={prevStep}
+                  selectedDiamond={selectedDiamond}
                 />
               )}
 
-              {/* Diamond type selection pages */}
-              {currentStep === 3 && selectedDiamond?.name === "Round" && (
-                <RoundDiamonds 
-                  onNext={handleDiamondTypeSelected}
-                  onBack={prevStep}
-                />
-              )}
-
-              {currentStep === 3 && selectedDiamond?.name === "Princess" && (
-                <PrincessDiamonds 
-                  onNext={handleDiamondTypeSelected}
-                  onBack={prevStep}
-                />
-              )}
-
-              {currentStep === 3 && selectedDiamond?.name === "Oval" && (
-                <OvalDiamonds 
-                  onNext={handleDiamondTypeSelected}
-                  onBack={prevStep}
-                />
-              )}
-
-              {/* Style selection - step 4 */}
-              {currentStep === 4 && !selectedStyle && (
+              {currentStep === 3 && (
                 <StyleSelection 
                   styles={styles}
                   onNext={handleStyleSelected}
                   onBack={prevStep}
+                  selectedStyle={selectedStyle}
                 />
               )}
 
-              {/* Style type selection pages */}
-              {currentStep === 4 && selectedStyle?.name === "Classic" && (
-                <ClassicStyle 
-                  onNext={handleStyleTypeSelected}
-                  onBack={prevStep}
-                />
-              )}
-
-              {currentStep === 4 && selectedStyle?.name === "Vintage" && (
-                <VintageStyle 
-                  onNext={handleStyleTypeSelected}
-                  onBack={prevStep}
-                />
-              )}
-
-              {currentStep === 4 && selectedStyle?.name === "Modern" && (
-                <ModernStyle 
-                  onNext={handleStyleTypeSelected}
-                  onBack={prevStep}
-                />
-              )}
-
-              {currentStep === 5 && (
+              {currentStep === 4 && (
                 <ReviewStep 
-                  selectedMetal={selectedMetalType || selectedMetal}
-                  selectedDiamond={selectedDiamondType || selectedDiamond}
-                  selectedStyle={selectedStyleType || selectedStyle}
+                  selectedMetal={selectedMetal}
+                  selectedDiamond={selectedDiamond}
+                  selectedStyle={selectedStyle}
                   totalPrice={totalPrice}
                   onSubmit={handleSubmitOrder}
                   onBack={prevStep}

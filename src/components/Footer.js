@@ -40,9 +40,7 @@ const Footer = () => {
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Home</a></li>
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Shop</a></li>
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Custom Rings</a></li>
-              {/* <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Collections</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">About Us</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Contact</a></li> */}
+             
             </ul>
           </div>
 
@@ -53,9 +51,7 @@ const Footer = () => {
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">My Account</a></li>
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Order Tracking</a></li>
               <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Wishlist</a></li>
-              {/* <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Shipping Policy</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">Returns & Exchanges</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors">FAQ</a></li> */}
+             
             </ul>
           </div>
 

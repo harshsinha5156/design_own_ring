@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import HomePage from './components/HomePage';
 import CustomRingPage from './components/CustomRingPage';
 import Footer from './components/Footer';
-import { useEffect } from 'react';
+
 
 function App() {
   return (
@@ -18,7 +18,6 @@ function App() {
   );
 }
 
-// Wrapper component to handle navigation for CustomRingPage
 function CustomRingWrapper() {
   const navigate = useNavigate();
 
