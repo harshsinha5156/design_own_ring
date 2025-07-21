@@ -50,7 +50,7 @@ const MetalSelection = ({ onNext }) => {
                 ? 'ring-4 ring-yellow-500 shadow-lg' 
                 : 'ring-1 ring-gray-200 hover:ring-2 hover:ring-yellow-400 hover:shadow-md'
             }`}
-            style={{ height: '400px' }} // Fixed height for all cards
+            style={{ height: '400px' }} 
           >
             {/* Image section with dark background */}
             <div className="bg-gray-900 flex-grow flex items-center justify-center p-4">
@@ -60,7 +60,7 @@ const MetalSelection = ({ onNext }) => {
                 className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
                 style={{ 
                   filter: 'drop-shadow(0 0 12px rgba(255,255,255,0.3))',
-                  maxHeight: '280px' // Limits image size within container
+                  maxHeight: '280px' 
                 }}
               />
               {selectedMetal?.id === metal.id && (

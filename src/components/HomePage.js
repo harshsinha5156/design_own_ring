@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect , useRef} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiChevronRight, FiChevronLeft, FiShoppingBag, FiHeart, FiSearch } from 'react-icons/fi';
+import {motion, AnimatePresence } from 'framer-motion';
+import { FiChevronRight, FiChevronLeft, FiShoppingBag, FiHeart, FiSearch,FiStar } from 'react-icons/fi';
 
 const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -12,28 +13,33 @@ const HomePage = () => {
   const [orderSubmitted, setOrderSubmitted] = useState(false);
 
   const navigate = useNavigate();
+  const featuredRef = useRef(null);
+  const customRingRef = useRef(null);
 
   const slides = [
     {
       id: 1,
       title: "Exquisite Diamond Collection",
       subtitle: "Handcrafted with precision and passion",
-      image: "https://media.istockphoto.com/id/1127154607/photo/diamond-engagement-ring-wedding-ring-on-blue-glossy-background.jpg?s=612x612&w=0&k=20&c=PtxKl4O6LEuBeASsjo5ReWSiZL86t_a-kILPsqPWgRc=",
-      cta: "Shop Now"
+      image: "https://images.unsplash.com/photo-1605100804567-1ffe942b5cd6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGRpYW1vbmQlMjByaW5nfGVufDB8fDB8fHww",
+      cta: "Shop Now",
+      action: () => scrollToSection(featuredRef)
     },
     {
       id: 2,
       title: "Customize Your Perfect Ring",
       subtitle: "Design a ring that tells your story",
-      image: "https://media.istockphoto.com/id/1187919612/photo/commitment.jpg?s=612x612&w=0&k=20&c=lLIg_XW8qw6l66pZUhmeie72e3fmaNxiQXI5ae_3l_M=",
-      cta: "Start Designing"
+      image: "https://media.istockphoto.com/id/2169397992/photo/diamond-jewellery-ring-reflection-photography.jpg?s=612x612&w=0&k=20&c=ZwV-cUyW7gC-6QAaqFXxrZ1ZW3cmNozTiVkR5OTFuqs=",
+      cta: "Start Designing",
+      action: () => navigate('/cutom-ring')
     },
     {
       id: 3,
       title: "Luxury Necklaces",
       subtitle: "Elegance redefined",
-      image: "https://media.istockphoto.com/id/1252408750/photo/platinum-diamond-ring-on-red-rose.jpg?s=612x612&w=0&k=20&c=2Mv7mVtKILF93DjT0pgu1b5uhFfUtPvPn3bf_7gD2Cc=",
-      cta: "Explore Collection"
+      image: "https://media.istockphoto.com/id/182786637/photo/diamond-ring.jpg?s=612x612&w=0&k=20&c=unlyBs6cdV7_jrwBjkOyBKkqVbRh5cR2PwCPUk3xwFc=",
+      cta: "Explore Collection",
+      action: () => scrollToSection(featuredRef)
     }
   ];
 
@@ -115,6 +121,79 @@ const HomePage = () => {
     }
   ];
 
+
+  const recentCustomRings = [
+    {
+      id: 1,
+      metal: 'Rose Gold',
+      diamond: 'Princess',
+      style: 'Modern',
+      image: 'https://media.istockphoto.com/id/1405515356/photo/accessories-a-white-gold-ring-set-with-diamonds.jpg?s=612x612&w=0&k=20&c=x7UCX3t2TU7bt8K2qg9rGi-OB7nTmakQrnf7lmWE4RQ=',
+      price: 2400
+    },
+    {
+      id: 2,
+      metal: 'Platinum',
+      diamond: 'Round',
+      style: 'Classic',
+      image: 'https://media.istockphoto.com/id/511646917/photo/golden-diamond-ring-and-contemporary-diamond.jpg?s=612x612&w=0&k=20&c=69CbeMNEwZso5PBbwpPBzPZpO243ZHAAT5QoOHKpGrU=',
+      price: 2600
+    },
+    {
+      id: 3,
+      metal: 'Gold',
+      diamond: 'Oval',
+      style: 'Vintage',
+      image: 'https://media.istockphoto.com/id/1156500146/photo/gold-ring-diamond-gem-closeup.jpg?s=612x612&w=0&k=20&c=T1H4KJVisQIeBGrWzEfDuwD5m7vB60sg3nN-UTA2mH0=',
+      price: 2200
+    }
+  ];
+
+ const reviews = [
+    {
+      id: 1,
+      name: 'Rahul Kumar',
+      rating: 5,
+      comment: 'Absolutely love my custom ring! The quality is exceptional and the design process was so easy.',
+      image: 'https://randomuser.me/api/portraits/women/44.jpg'
+    },
+    {
+      id: 2,
+      name: 'Akash Dubey',
+      rating: 4,
+      comment: 'Great experience designing our engagement ring. The final product was even better than expected!',
+      image: 'https://randomuser.me/api/portraits/men/32.jpg'
+    },
+    {
+      id: 3,
+      name: 'Shivani Sharma',
+      rating: 5,
+      comment: 'The perfect ring at the perfect price. Customer service was excellent throughout the process.',
+      image: 'https://randomuser.me/api/portraits/women/68.jpg'
+    },
+    {
+      id: 4,
+      name: 'Priya Patel',
+      rating: 5,
+      comment: 'My wedding ring is exactly how I imagined it. The customization options were amazing!',
+      image: 'https://randomuser.me/api/portraits/women/33.jpg'
+    },
+    {
+      id: 5,
+      name: 'Vikram Singh',
+      rating: 4,
+      comment: 'Excellent craftsmanship. The ring looks more beautiful in person than in pictures.',
+      image: 'https://randomuser.me/api/portraits/men/45.jpg'
+    },
+    {
+      id: 6,
+      name: 'Neha Gupta',
+      rating: 5,
+      comment: 'The attention to detail is incredible. Received so many compliments on my custom designed ring!',
+      image: 'https://randomuser.me/api/portraits/women/72.jpg'
+    }
+];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
@@ -124,6 +203,46 @@ const HomePage = () => {
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
+
+  // Animation Variants
+
+  const fadeIn = {
+    hidden: {opacity: 0},
+    visible : {opacity: 1 , trasition: {duration: 0.8}}
+  };
+
+  const slideUp = {
+    hidden : {y: 50, opacity:0},
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const staggerContainer = {
+    hidden : {opacity: 0},
+    visible: {
+      opacity: 1, 
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const cardHover = {
+    hover : {
+      y:10, 
+      boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)",
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    }
   };
 
   const prevSlide = () => {
@@ -166,100 +285,204 @@ const HomePage = () => {
     }, 3000);
   };
 
+  const scrollToSection = (ref)=> {
+    if(ref && ref.current){
+    window.scrollTo({
+      top: ref.current.offsetTip-100,
+      behavior: 'smooth'
+    });
+  }
+};
+
   
 
  
 
   const totalPrice = (selectedMetal?.price || 0) + (selectedDiamond?.price || 0) + (selectedStyle?.price || 0);
 
-  const getMetalColor = (metalName) => {
-    switch(metalName) {
-      case 'Gold': return '#FFD700';
-      case 'Platinum': return '#E5E4E2';
-      case 'Rose Gold': return '#E0BFB8';
-      default: return '#E5E4E2';
-    }
-  };
+ 
 
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
-        <div className="text-2xl font-bold text-gray-800">Ring Cutomizer</div>
-        <div className="hidden md:flex space-x-8">
-          <button 
-            onClick={() => navigate('/custom-ring')}
-            className="text-xl font-bold bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-2 rounded-full transition duration-300"
-          >
-            Custom Ring
-          </button>
-        </div>
-        <div className="flex space-x-4">
-          <button className="text-gray-800 hover:text-yellow-600">
-            <FiSearch size={20} />
-          </button>
-          <button 
-            className="text-gray-800 hover:text-yellow-600 relative"
-            onClick={() => navigate('/wishlist')}
-          >
-            <FiHeart size={20} />
-            
-              <span className="absolute -top-1 -right-1 bg-yellow-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                
-              </span>
-          </button>
-          <button 
-            className="text-gray-800 hover:text-yellow-600 relative"
-            onClick={() => navigate('/cart')}
-          >
-            <FiShoppingBag size={20} />
-            
-              <span className="absolute -top-1 -right-1 bg-yellow-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                
-              </span>
-           
-          </button>
-        </div>
-      </nav>
+      <motion.nav 
+  initial={{ y: -100, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ duration: 0.5 }}
+  className="bg-white shadow-md py-3 px-6 flex justify-between items-center sticky top-0 z-50"
+>
+  {/* Logo and Brand Name - Left Side */}
+  <motion.div 
+    whileHover={{ scale: 1.05 }}
+    className="flex items-center space-x-3 cursor-pointer"
+    onClick={() => navigate('/')}
+  >
+    {/* Logo - Diamond Ring Icon */}
+    <motion.div 
+      whileHover={{ rotate: 15 }}
+      className="w-10 h-10 bg-yellow-600 rounded-full flex items-center justify-center shadow-md"
+    >
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        className="h-6 w-6 text-white" 
+        fill="none" 
+        viewBox="0 0 24 24" 
+        stroke="currentColor"
+        strokeWidth={2}
+      >
+        <path 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" 
+        />
+      </svg>
+    </motion.div>
+    
+    {/* Brand Name */}
+    <motion.h1 
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.2 }}
+      className="text-2xl font-bold text-gray-800"
+    >
+      <span className="text-yellow-600">Ring</span> Customizer
+    </motion.h1>
+  </motion.div>
+
+  {/* Navigation Button - Center */}
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.3 }}
+    className="hidden md:flex space-x-8"
+  >
+    <motion.button 
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={() => navigate('/custom-ring')}
+      className="text-xl font-bold bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-2 rounded-full transition duration-300 shadow-md"
+    >
+      Custom Ring
+    </motion.button>
+  </motion.div>
+
+  {/* Icons - Right Side */}
+  <motion.div 
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.4 }}
+    className="flex space-x-5"
+  >
+    <motion.button 
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.9 }}
+      className="text-gray-800 hover:text-yellow-600"
+    >
+      <FiSearch size={22} />
+    </motion.button>
+    
+    <motion.button 
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.9 }}
+      className="text-gray-800 hover:text-yellow-600 relative"
+      onClick={() => navigate('/wishlist')}
+    >
+      <FiHeart size={22} />
+      <motion.span 
+        className="absolute -top-1 -right-1 bg-yellow-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+        whileHover={{ scale: 1.2 }}
+      >
+        0
+      </motion.span>
+    </motion.button>
+    
+    <motion.button 
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.9 }}
+      className="text-gray-800 hover:text-yellow-600 relative"
+      onClick={() => navigate('/cart')}
+    >
+      <FiShoppingBag size={22} />
+      <motion.span 
+        className="absolute -top-1 -right-1 bg-yellow-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+        whileHover={{ scale: 1.2 }}
+      >
+        0
+      </motion.span>
+    </motion.button>
+  </motion.div>
+</motion.nav>
 
       {/* Hero Slider */}
       <div className="relative h-96 md:h-screen max-h-screen overflow-hidden">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
-          >
-            <img
-              src={slide.image}
-              alt={slide.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-              <div className="text-center text-white px-4">
-                <h1 className="text-3xl md:text-5xl font-bold mb-4">{slide.title}</h1>
-                <p className="text-xl md:text-2xl mb-8">{slide.subtitle}</p>
-                <button
-                  onClick={() => slide.id === 2 ? setShowCustomizer(true) : null}
-                  className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-8 rounded-full transition duration-300"
-                >
-                  {slide.cta}
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-        <button
+        <AnimatePresence>
+          {slides.map((slide, index) => (
+            index === currentSlide && (
+              <motion.div
+                key={slide.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0"
+              >
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                  <motion.div 
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeIn}
+                    className="text-center text-white px-4"
+                  >
+                    <motion.h1 
+                      variants={slideUp}
+                      className="text-3xl md:text-5xl font-bold mb-4"
+                    >
+                      {slide.title}
+                    </motion.h1>
+                    <motion.p 
+                      variants={slideUp}
+                      className="text-xl md:text-2xl mb-8"
+                    >
+                      {slide.subtitle}
+                    </motion.p>
+                    <motion.button
+                      variants={slideUp}
+                      onClick={slide.action}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-8 rounded-full transition duration-300"
+                    >
+                      {slide.cta}
+                    </motion.button>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )
+          ))}
+        </AnimatePresence>
+        
+        {/* Slider controls with hover effects */}
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={prevSlide}
           className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2 hover:bg-opacity-80 transition duration-300"
         >
           <FiChevronLeft size={24} />
-        </button>
-        <button
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={nextSlide}
           className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2 hover:bg-opacity-80 transition duration-300"
         >
           <FiChevronRight size={24} />
-        </button>
+        </motion.button>
         <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
           {slides.map((_, index) => (
             <button
@@ -272,11 +495,27 @@ const HomePage = () => {
       </div>
 
       {/* Featured Collections */}
-      <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">Our Featured Collections</h2>
+        
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+        ref={featuredRef} 
+        className="py-16 px-4 md:px-8 max-w-7xl mx-auto"
+      >
+        <motion.h2 variants={slideUp} className="text-3xl font-bold text-center mb-12">
+          Our Featured Collections
+        </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {featuredProducts.map((product) => (
-            <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+            <motion.div
+              key={product.id}
+              variants={slideUp}
+              whileHover="hover"
+              variants={cardHover}
+              className="bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+            >
               <img
                 src={product.image}
                 alt={product.name}
@@ -287,57 +526,84 @@ const HomePage = () => {
                 <p className="text-gray-600 mb-2">{product.category}</p>
                 <p className="text-yellow-600 font-bold">${product.price.toLocaleString()}</p>
                 <div className="mt-4 flex justify-between">
-                  <button 
+                  <motion.button 
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                     className="text-gray-800 hover:text-yellow-600"
-                    
                   >
                     <FiHeart size={20} />
-                  </button>
-                  <button 
+                  </motion.button>
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-full text-sm font-medium transition duration-300"
-                   
                   >
                     Add to Cart
-                  </button>
+                  </motion.button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
+
+
+      
+ 
+
+      
 
       {/* Create Your Perfect Ring Section */}
-      <section className="relative">
-  {/* Background image section (60% height) */}
-  <div className="relative h-[60vh]">
-    <div className="absolute inset-0 z-0">
-      <img
-        src="https://media.istockphoto.com/id/511646917/photo/golden-diamond-ring-and-contemporary-diamond.jpg?s=612x612&w=0&k=20&c=69CbeMNEwZso5PBbwpPBzPZpO243ZHAAT5QoOHKpGrU="
-        alt="Diamond ring background"
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-    </div>
+      <motion.section
+        ref={customRingRef}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="relative"
+      >
+        <div className="relative h-[60vh]">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 z-0"
+          >
+            <img
+              src="https://media.istockphoto.com/id/511646917/photo/golden-diamond-ring-and-contemporary-diamond.jpg?s=612x612&w=0&k=20&c=69CbeMNEwZso5PBbwpPBzPZpO243ZHAAT5QoOHKpGrU="
+              alt="Diamond ring background"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          </motion.div>
 
-    {/* Content container centered in the 60% space */}
-    <div className="relative z-10 h-full flex items-center justify-center">
-      <div className="w-full max-w-7xl text-center bg-white bg-opacity-30 p-8 md:p-12 rounded-xl shadow-xl mx-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-          Create Your Perfect Ring
-        </h2>
-        <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-          Design a custom ring that reflects your unique style with our easy-to-use ring builder.
-        </p>
-        <button
-          onClick={() => navigate('/custom-ring')}
-          className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 text-lg"
-        >
-          Start Designing
-        </button>
-      </div>
-    </div>
-  </div>
-  </section>
+          <div className="relative z-10 h-full flex items-center justify-center">
+            <motion.div 
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="w-full max-w-7xl text-center bg-white bg-opacity-30 p-8 md:p-12 rounded-xl shadow-xl mx-4"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+                Create Your Perfect Ring
+              </h2>
+              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Design a custom ring that reflects your unique style with our easy-to-use ring builder.
+              </p>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/custom-ring')}
+                className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 text-lg"
+              >
+                Start Designing
+              </motion.button>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+   
 
       {/* Ring Customizer Modal */}
       {showCustomizer && (
@@ -590,6 +856,122 @@ const HomePage = () => {
           <FiShoppingBag size={24} />
         </button>
       </div>
+
+           {/* Recent Custom Rings */}
+      {/* Recent Custom Rings with animation */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="py-16 bg-gray-50"
+      >
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <motion.h2 
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold text-center mb-12"
+          >
+            Recent Custom Rings
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {recentCustomRings.map((ring, index) => (
+              <motion.div
+                key={ring.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="bg-white rounded-lg shadow-md overflow-hidden transition duration-300"
+              >
+                <img
+                  src={ring.image}
+                  alt={`Custom ${ring.metal} ring`}
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{ring.metal} & {ring.diamond}</h3>
+                  <p className="text-gray-600 mb-2">{ring.style} Style</p>
+                  <p className="text-yellow-600 font-bold">${ring.price.toLocaleString()}</p>
+                  <motion.button 
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => navigate('/custom-ring')}
+                    className="mt-4 w-full bg-yellow-600 hover:bg-yellow-700 text-white py-2 rounded-full transition duration-300"
+                  >
+                    Create Similar
+                  </motion.button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+       {/* Customer Reviews with animations */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="py-16 bg-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <motion.h2 
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold text-center mb-12"
+          >
+            What Our Customers Say
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {reviews.map((review, index) => (
+              <motion.div
+                key={review.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="bg-gray-50 rounded-lg p-6 shadow-sm transition duration-300"
+              >
+                <div className="flex items-center mb-4">
+                  <motion.img 
+                    whileHover={{ rotate: 5 }}
+                    src={review.image} 
+                    alt={review.name} 
+                    className="w-12 h-12 rounded-full object-cover mr-4"
+                  />
+                  <div>
+                    <h4 className="font-semibold">{review.name}</h4>
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <FiStar 
+                          key={i} 
+                          className={`${i < review.rating ? 'text-yellow-500 fill-yellow-500' : 'text-gray-300'}`} 
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <motion.p 
+                  whileHover={{ x: 5 }}
+                  className="text-gray-600 italic"
+                >
+                  "{review.comment}"
+                </motion.p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+
     </div>
   );
 };

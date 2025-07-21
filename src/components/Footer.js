@@ -61,7 +61,7 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-start">
                 <MdLocationOn className="mt-1 mr-3 text-yellow-400" size={20} />
-                <p className="text-gray-300">Secto 18 , Noida , UP, India</p>
+                <p className="text-gray-300">Sector 18 , Noida , UP, India</p>
               </div>
               <div className="flex items-center">
                 <MdPhone className="mr-3 text-yellow-400" size={20} />
