@@ -31,7 +31,7 @@ const HomePage = () => {
       subtitle: "Design a ring that tells your story",
       image: "https://media.istockphoto.com/id/2169397992/photo/diamond-jewellery-ring-reflection-photography.jpg?s=612x612&w=0&k=20&c=ZwV-cUyW7gC-6QAaqFXxrZ1ZW3cmNozTiVkR5OTFuqs=",
       cta: "Start Designing",
-      action: () => navigate('/cutom-ring')
+      action: () => navigate('/custom-ring')
     },
     {
       id: 3,
