@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
+<<<<<<< HEAD
 @tailwind utilities;
+=======
+@tailwind utilities;
+
+/* Custom animations */
+@keyframes ring-spin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.animate-ring-spin {
+  animation: ring-spin 1.5s ease-in-out infinite;
+}
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454

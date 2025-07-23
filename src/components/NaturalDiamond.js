@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FiChevronLeft } from 'react-icons/fi';
@@ -177,6 +180,7 @@ const NaturalDiamond = () => {
   };
 
   const handleImageClick = (diamond) => {
+<<<<<<< HEAD
   navigate('/ring-review', {
     state: {
       ring: location.state?.ring, // Pass the ring data from location state
@@ -185,11 +189,22 @@ const NaturalDiamond = () => {
     }
   });
 };
+=======
+    navigate('/ring-review', {
+      state: {
+        ringId,
+        diamondType,
+        diamond: diamond
+      }
+    });
+  };
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
 
   const handleContinue = () => {
     if (!selectedDiamond) return;
     
     navigate('/ring-review', {
+<<<<<<< HEAD
     state: {
       ring: location.state?.ring,
       diamond: selectedDiamond,
@@ -197,6 +212,15 @@ const NaturalDiamond = () => {
     }
   });
 };
+=======
+      state: {
+        ringId,
+        diamondType,
+        diamond: selectedDiamond
+      }
+    });
+  };
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
 
   // Filter diamonds by selected shape
   const filteredDiamonds = selectedShape 

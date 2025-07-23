@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 

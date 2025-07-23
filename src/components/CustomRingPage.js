@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiChevronRight, FiShoppingBag, FiHeart, FiSearch, FiX } from 'react-icons/fi';
@@ -36,7 +39,11 @@ const CustomRingPage = () => {
       metal: "Yellow Gold",
       image: "https://web-design-company.site/qa/kdmlite/wp-content/uploads/2025/07/Valentina-Solitaire-Ring-gold-pv-12.png"
     },
+<<<<<<< HEAD
      { 
+=======
+    { 
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
       id: 2, 
       name: "Vintage Yellow Gold Ring", 
       price: 1200, 
@@ -139,9 +146,14 @@ const CustomRingPage = () => {
       style: "Modern", 
       metal: "Yellow Gold",
       image: "https://web-design-company.site/qa/kdmlite/wp-content/uploads/2025/07/Marcella-Three-Stone-Engagement-Ring-whitegold-pv-31.png"
+<<<<<<< HEAD
     },
     { 
       id: 15, 
+=======
+    },{ 
+      id: 16, 
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
       name: "Timeless Classic Ring", 
       price: 1250, 
       style: "Classic", 
@@ -149,7 +161,11 @@ const CustomRingPage = () => {
       image: "https://web-design-company.site/qa/kdmlite/wp-content/uploads/2025/07/Noelle-Double-Halo-Engagement-Ring-whitegold-pv-31.png"
     },
     { 
+<<<<<<< HEAD
       id: 16, 
+=======
+      id: 14, 
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
       name: "Sleek Modern Ring", 
       price: 1550, 
       style: "Modern", 
@@ -166,20 +182,36 @@ const CustomRingPage = () => {
   });
 
   const handleStyleSelect = (style) => {
+<<<<<<< HEAD
+=======
+    // Toggle selection - if already selected, unselect
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
     if (selectedStyle && selectedStyle.id === style.id) {
       setSelectedStyle(null);
     } else {
       setSelectedStyle(style);
+<<<<<<< HEAD
       setCurrentStep(2);
+=======
+      setCurrentStep(2); // Move to next step when style is selected
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
     }
   };
 
   const handleMetalSelect = (metal) => {
+<<<<<<< HEAD
+=======
+    // Toggle selection - if already selected, unselect
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
     if (selectedMetal && selectedMetal.id === metal.id) {
       setSelectedMetal(null);
     } else {
       setSelectedMetal(metal);
+<<<<<<< HEAD
       setCurrentStep(3);
+=======
+      setCurrentStep(3); // Move to next step when metal is selected
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
     }
   };
 
@@ -189,6 +221,7 @@ const CustomRingPage = () => {
     setCurrentStep(1);
   };
 
+<<<<<<< HEAD
   const handleRingClick = (ring) => {
     navigate(`/ring/${ring.id}`, { 
       state: { 
@@ -198,6 +231,8 @@ const CustomRingPage = () => {
     });
   };
 
+=======
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -242,7 +277,11 @@ const CustomRingPage = () => {
         </div>
       </nav>
 
+<<<<<<< HEAD
       {/* Main Content */}
+=======
+      {/* Main Content - Centered */}
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-8 text-center">
@@ -280,8 +319,14 @@ const CustomRingPage = () => {
           </div>
         </div>
 
+<<<<<<< HEAD
         {/* Style and Metal Selection */}
         <div className="flex flex-col md:flex-row justify-center items-start gap-8 mb-8">
+=======
+        {/* Style and Metal Selection in One Line */}
+        <div className="flex flex-col md:flex-row justify-center items-start gap-8 mb-8">
+          {/* Style Selection */}
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
           <div className="w-full md:w-1/2">
             <h2 className="text-xl font-bold mb-4 text-center">Style</h2>
             <div className="flex justify-center gap-4 flex-wrap">
@@ -302,6 +347,10 @@ const CustomRingPage = () => {
             </div>
           </div>
 
+<<<<<<< HEAD
+=======
+          {/* Metal Selection */}
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
           <div className="w-full md:w-1/2">
             <h2 className="text-xl font-bold mb-4 text-center">Metal</h2>
             <div className="flex justify-center gap-4 flex-wrap">
@@ -387,6 +436,7 @@ const CustomRingPage = () => {
             </div>
           </div>
 
+<<<<<<< HEAD
           {/* Filtered Rings */}
           {filteredRings.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -421,6 +471,49 @@ const CustomRingPage = () => {
           )}
         </div>
       </div>
+=======
+          {/* Filtered Rings - 4 per row */}
+          {/* Filtered Rings - 4 per row */}
+{filteredRings.length > 0 ? (
+ <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  {filteredRings.map((ring) => (
+    <div 
+      key={ring.id} 
+      className="cursor-pointer bg-gray-50 rounded-lg p-2 transition hover:bg-gray-100 group relative"
+      onClick={() => navigate(`/ring/${ring.id}`)}
+    >
+      {/* Image container with hover effect */}
+      <div className="h-64 w-full flex items-center justify-center overflow-hidden">
+        <img 
+          src={ring.image} 
+          alt={ring.name}
+          className="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-110"
+        />
+      </div>
+      
+      {/* Product info */}
+      <div className="mt-2 p-2">
+        <h3 className="text-lg font-semibold line-clamp-1">{ring.name}</h3>
+        <div className="flex justify-between text-sm text-gray-600 mt-1">
+          <span>Style: {ring.style}</span>
+          <span>Metal: {ring.metal}</span>
+        </div>
+        <p className="text-yellow-600 font-bold mt-2">€{ring.price}</p>
+      </div>
+    </div>
+  ))}
+</div>
+) : (
+  <div className="text-center py-12">
+    <p className="text-gray-500">No rings match your selected filters. Try adjusting your selections.</p>
+  </div>
+)}
+          
+        </div>
+      </div>
+
+     
+>>>>>>> 59621f5ec9abefdceb8a381e53eb5da2776b5454
     </div>
   );
 };
