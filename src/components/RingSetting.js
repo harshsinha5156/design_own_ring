@@ -29,6 +29,8 @@ const RingDetailPage = () => {
   return (
     <div className="min-h-screen bg-white relative">
       {/* Navigation */}
+
+      
       <nav className="bg-white shadow-md py-3 px-6 flex justify-between items-center sticky top-0 z-40">
         <button 
           onClick={() => navigate(state?.fromCustomRingPage ? '/custom-ring' : '/')}
